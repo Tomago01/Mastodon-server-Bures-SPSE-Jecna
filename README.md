@@ -1,29 +1,43 @@
-# Mastodon projekt pro SPŠE Ječná
+# Mastodon projekt pro SPŠE Ječná – Samostatně Nasazená Instance
 
-## O projektu
+Tento repozitář obsahuje konfiguraci a nastavení pro spuštění vlastní federované sociální sítě pomocí [Mastodon](https://github.com/mastodon/mastodon).  
+Projekt je založen na oficiálním Docker deploymentu a obsahuje základní úpravy pro snadné spuštění.
 
-Tento projekt propojuje žáky všech ročníků na škole SPŠE Ječná prostřednictvím federativní platformy Mastodon. Jeho cílem je usnadnit sdílení zkušeností mezi ročníky, pomoci mladším žákům připravit se na následující rok a vytvořit komunitní prostor pro otázky a odpovědi.
+## Co projekt obsahuje
 
-## Proč je projekt unikátní?
+- `docker-compose.yml` pro definici služeb (web, redis, postgres, sidekiq, streaming).
+- `.env.production.sample` jako šablonu konfiguračního souboru.
+- Skripty pro první spuštění a administraci serveru.
 
-- První instance Mastodonu přizpůsobená konkrétní škole.
-- Důraz na komunitní propojení napříč ročníky.
-- Možnost sdílení anonymních dotazů a odpovědí.
-- Open-source řešení vhodné i pro jiné školy.
+## Jak projekt nasadit
 
-## Použité technologie
-
-- **Mastodon** (Ruby on Rails + React)
-- **Docker** pro snadné nasazení
-- **PostgreSQL** jako databázový systém
-- **Redis** pro background joby
-- **Nginx** jako reverzní proxy
-- **Let’s Encrypt** pro HTTPS
-
-## Jak projekt spustit
-
-1. Nainstaluj Docker a Docker Compose.
-2. Naklonuj repozitář:
+1. **Klonuj repozitář:**
    ```bash
-   git clone https://github.com/uzivatel/jecna-mastodon.git
-   cd jecna-mastodon
+   git clone https://github.com/tvoje-uzivatelske-jmeno/mastodon-server-setup.git
+   cd mastodon-server-setup
+   ```
+
+2. **Vytvoř konfigurační soubor:**
+   ```bash
+   cp .env.production.sample .env.production
+   ```
+
+3. **Uprav `.env.production` dle svých potřeb (doména, SMTP, databáze).**
+
+4. **Spusť služby:**
+   ```bash
+   docker-compose build
+   docker-compose up -d
+   ```
+
+5. **Inicializuj databázi a vytvoř admin účet:**
+   ```bash
+   docker-compose run --rm web bin/tootctl accounts create admin@example.com --confirmed --role Admin
+   ```
+
+6. **(Volitelné) Nastav reverzní proxy (např. Caddy nebo NGINX) a HTTPS certifikáty.**
+
+## Veřejná instance
+
+Pokud je server nasazen, najdeš ho na:  
+🌐 [https://buresweb.site](https://buresweb.site)
