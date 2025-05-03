@@ -35,4 +35,4 @@ docker-compose up -d
 ```bash
 docker-compose run --rm web bin/tootctl accounts create admin@example.com --confirmed --role Admin
 ```
-5. **Ověř spuštění instance na vlastní doméně (např. https://social.domena.cz).**
+5. **Ověř spuštění instance na vlastní doméně (např. https://buresweb.site).**
