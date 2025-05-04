@@ -3,7 +3,7 @@
 Tento repozitář obsahuje konfiguraci a nastavení pro spuštění vlastní federované sociální sítě pomocí [Mastodon](https://github.com/mastodon/mastodon).  
 Projekt je založen na oficiálním Docker deploymentu a obsahuje základní úpravy pro snadné spuštění.
 
-Veškeré potřebné informace naleznete v dokumentaci - **dokumentace_mastodon.pdf**.
+Veškeré potřebné informace naleznete v dokumentaci - **Mastodon_dokumentace.pdf**.
 
 ## Jak projekt nasadit z pohledu uživatele
 
